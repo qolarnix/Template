@@ -1,0 +1,17 @@
+{
+    "name": "photon/template",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "polarnix",
+            "email": "polarnix@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Photon\\Template\\": "./"
+        }
+    },
+    "require": {}
+}
