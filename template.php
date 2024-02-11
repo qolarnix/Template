@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Photon\Template;
+namespace Glacial\Template;
 
 class TemplateEngine {
     private array $config;
@@ -44,13 +44,3 @@ class TemplateEngine {
         return $output;
     }
 };
-
-$config = [
-    __DIR__ . '/components',
-    __DIR__ . '/pages'
-];
-$template = new TemplateEngine($config);
-
-echo $template->render('header', [
-    'title' => 'my title',
-]);
