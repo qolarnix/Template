@@ -13,6 +13,9 @@ class TemplateEngine {
         $slug = $slug.'.php';
         $paths = $this->config;
 
+        $view = new View();
+        array_push($args, $view);
+
         $paths = array_map(function($path) use ($slug) {
             return $path . '/' . $slug;
         }, $paths);
@@ -33,14 +36,16 @@ class TemplateEngine {
         }
 
         extract($args, EXTR_SKIP);
-        foreach($args as $value) {
-            $value = htmlspecialchars($value);
-            return $value;
-        }
 
         ob_start();
         include($file);
         $output = ob_get_clean();
         return $output;
+    }
+}
+
+class View extends TemplateEngine {
+    public function escape(string $val) {
+        return htmlentities($val);
     }
 };
