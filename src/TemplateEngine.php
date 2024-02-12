@@ -45,7 +45,29 @@ class TemplateEngine {
 }
 
 class View extends TemplateEngine {
-    public function escape(string $val) {
-        return htmlentities($val);
+    public function escape(string $val, string $mods = ''): string {
+        if(!$mods) {
+            return htmlspecialchars($val);
+        }
+        else {
+            $mods = explode('|', $mods);
+            print_r($mods);
+
+            foreach($mods as $m) {
+                if(method_exists($this, $m)) {
+                    $val = call_user_func(__NAMESPACE__ . '\View::'. $m, $val);
+                }
+            }
+
+            return $val;
+        }
     }
-};
+
+    static public function uppercase($val) {
+        return strtoupper($val);
+    }
+
+    static public function randomize($val) {
+        return str_shuffle($val);
+    }
+}
