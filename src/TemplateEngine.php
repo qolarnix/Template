@@ -51,7 +51,6 @@ class View extends TemplateEngine {
         }
         else {
             $mods = explode('|', $mods);
-            print_r($mods);
 
             foreach($mods as $m) {
                 if(method_exists($this, $m)) {
