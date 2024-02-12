@@ -54,7 +54,7 @@ class View extends TemplateEngine {
 
             foreach($mods as $m) {
                 if(method_exists($this, $m)) {
-                    $val = call_user_func(__NAMESPACE__ . '\View::'. $m, $val);
+                    $val = call_user_func(__NAMESPACE__ . '\View::' . $m, $val);
                 }
             }
 
@@ -64,6 +64,10 @@ class View extends TemplateEngine {
 
     static public function uppercase(string $val): string {
         return strtoupper($val);
+    }
+
+    static public function lowercase(string $val): string {
+        return strtolower($val);
     }
 
     static public function randomize(string $val): string {
