@@ -59,15 +59,15 @@ class View extends TemplateEngine {
                 }
             }
 
-            return $val;
+            return htmlspecialchars($val);
         }
     }
 
-    static public function uppercase($val) {
+    static public function uppercase(string $val): string {
         return strtoupper($val);
     }
 
-    static public function randomize($val) {
+    static public function randomize(string $val): string {
         return str_shuffle($val);
     }
 }
