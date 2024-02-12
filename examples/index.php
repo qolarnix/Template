@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-require __DIR__ . '/vendor/autoload.php';
-
 use Glacial\Template\TemplateEngine;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
     __DIR__ . '/components',
