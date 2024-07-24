@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
     __DIR__ . '/components',
-    __DIR__ . '/pages'
+    __DIR__ . '/pages',
 ];
 $template = new TemplateEngine($config);
 

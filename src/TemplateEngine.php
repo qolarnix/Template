@@ -13,7 +13,7 @@ class TemplateEngine {
         $slug = $slug.'.php';
         $paths = $this->config;
 
-        $view = new View();
+        $view = new View($paths);
         array_push($args, $view);
 
         $paths = array_map(function($path) use ($slug) {
@@ -45,6 +45,10 @@ class TemplateEngine {
 }
 
 class View extends TemplateEngine {
+    public function __construct(array $config = []) {
+        parent::__construct($config);
+    }
+
     public function escape(string $val, string $mods = ''): string {
         if(!$mods) {
             return htmlspecialchars($val);

@@ -3,3 +3,7 @@
 <p><?php echo $view->escape($htmlval); ?></p>
 
 <p><?php echo $view->escape($desc, 'uppercase|randomize'); ?></p>
+
+<?php
+    echo $view->render('title');
+?>
