@@ -5,5 +5,5 @@
 <p><?php echo $view->escape($desc, 'uppercase|randomize'); ?></p>
 
 <?php
-    echo $view->render('title');
+    echo $view->escape($list['this']);
 ?>

@@ -2,6 +2,8 @@
 
 namespace Glacial\Template;
 
+use Exception;
+
 class TemplateEngine {
     private array $config;
 
@@ -9,38 +11,31 @@ class TemplateEngine {
         $this->config = $config;
     }
 
-    public function render(string $slug, array $args = []) {
+    public function render(string $slug, array $args = []): string|Exception {
         $slug = $slug.'.php';
         $paths = $this->config;
 
         $view = new View($paths);
         array_push($args, $view);
 
-        $paths = array_map(function($path) use ($slug) {
+        $paths = array_map(function($path) use($slug) {
             return $path . '/' . $slug;
         }, $paths);
 
         $file = '';
-
         foreach($paths as $p) {
             if(is_file($p)) {
                 $file = $p;
                 break;
             }
         }
-
-        if(!$file) {
-            $err = 'Unable to locate template file: ';
-            trigger_error($err . $slug, E_USER_WARNING);
-            return;
-        }
+        if(!$file) return new Exception('Unable to locate template file: ' . $slug);
 
         extract($args, EXTR_SKIP);
 
         ob_start();
         include($file);
-        $output = ob_get_clean();
-        return $output;
+        return ob_get_clean();
     }
 }
 

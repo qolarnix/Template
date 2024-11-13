@@ -13,5 +13,8 @@ $template = new TemplateEngine($config);
 echo $template->render('header', [
     'title' => 'test',
     'desc' => 'lorem ipsum dolor sit amet',
-    'htmlval' => '<script>alert(1);</script>'
+    'htmlval' => '<script>alert(1);</script>',
+    'list' => [
+        'this' => 'that'
+    ],
 ]);
